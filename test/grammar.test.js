@@ -69,7 +69,7 @@ describe('@bablr/language-en-es6', () => {
             body[]:
             <$ExportDeclaration>
               sigilToken: <*Keyword 'export' />
-              declaration: undefined
+              declaration$: undefined
               defaultToken: null
               #: :Comment.Space: <*Space ' ' />
               specifiers[]$: []
@@ -104,7 +104,7 @@ describe('@bablr/language-en-es6', () => {
                 close: <*Punctuator '"' { balancer: true } />
               </>
               endToken: <*Punctuator ';' />
-              declaration: null
+              declaration$: null
             </>
           </>
         </>\n`);
