@@ -1,1 +1,4 @@
 lib/grammar.js linguist-generated=true
+lib/mixins/class.js linguist-generated=true
+lib/mixins/function.js linguist-generated=true
+lib/mixins/import.js linguist-generated=true
