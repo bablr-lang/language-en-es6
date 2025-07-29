@@ -25,7 +25,6 @@ describe('@bablr/language-en-es6', () => {
 
     it('js`import foo from "bar"`', () => {
       expect(print(js`import foo from "bar"`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/universe/es6' }>
         <$_>
           .:
           <$Program>
@@ -61,7 +60,6 @@ describe('@bablr/language-en-es6', () => {
 
     it('js`export food, {stuff} from "bar";`', () => {
       expect(print(js`export food, {stuff} from "bar";`)).toEqual(dedent`\
-        <!0:cstml { bablrLanguage: 'https://bablr.org/languages/universe/es6' }>
         <$_>
           .:
           <$Program>
@@ -69,7 +67,7 @@ describe('@bablr/language-en-es6', () => {
             body[]:
             <$ExportDeclaration>
               sigilToken: <*Keyword 'export' />
-              declaration$: undefined
+              declaration+$: undefined
               defaultToken: null
               #: :Comment.Space: <*Space ' ' />
               specifiers[]$: []
@@ -80,8 +78,8 @@ describe('@bablr/language-en-es6', () => {
                   value: <*Literal 'food' />
                 </>
               </>
-              specifierSeparatorTokens[]: []
-              specifierSeparatorTokens[]: <*Punctuator ',' />
+              #separatorTokens[]: []
+              #separatorTokens[]: <*Punctuator ',' />
               #: :Comment.Space: <*Space ' ' />
               openSpecifiersToken: <*Punctuator '{' { balanced: '}' } />
               specifiers[]$:
@@ -104,7 +102,7 @@ describe('@bablr/language-en-es6', () => {
                 close: <*Punctuator '"' { balancer: true } />
               </>
               endToken: <*Punctuator ';' />
-              declaration$: null
+              declaration+$: null
             </>
           </>
         </>\n`);
