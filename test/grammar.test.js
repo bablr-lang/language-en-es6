@@ -16,7 +16,7 @@ const buildJSTag = (type) => {
 };
 
 const print = (tree) => {
-  return printPrettyCSTML(tree.node);
+  return printPrettyCSTML(tree);
 };
 
 describe('@bablr/language-en-es6', () => {
@@ -24,86 +24,71 @@ describe('@bablr/language-en-es6', () => {
     const js = buildJSTag('Program');
 
     it('js`import foo from "bar"`', () => {
-      expect(print(js`import foo from "bar"`)).toEqual(dedent`\
-        <$_>
-          .:
-          <$Program>
-            body[]: []
-            body[]:
-            <$ImportDeclaration>
-              sigilToken: <*Keyword 'import' />
-              #: :Comment.Space: <*Space ' ' />
-              specifiers[]$: []
-              specifiers[]$:
-              <$ImportDefaultSpecifier>
-                local:
-                <$Identifier>
-                  value: <*Literal 'foo' />
-                  #: :Comment.Space: <*Space ' ' />
-                </>
+      expect(print(js`import foo from "bar"`)).toEqual(dedent`<$Program>
+          body[]:
+          <$ImportDeclaration>
+            sigilToken: <*Keyword 'import' />
+            #: :Space: <*Space ' ' />
+            specifiers[]$:
+            <$ImportDefaultSpecifier>
+              local:
+              <$Identifier>
+                value: <*Literal 'foo' />
               </>
-              openSpecifiersToken: null
-              closeSpecifiersToken: null
-              fromToken: <*Keyword 'from' />
-              #: :Comment.Space: <*Space ' ' />
-              source$:
-              <$String>
-                open: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
-                content: <*StringContent 'bar' />
-                close: <*Punctuator '"' { balancer: true } />
-              </>
-              endToken: null
             </>
+            #: :Space: <*Space ' ' />
+            openSpecifiersToken: null
+            closeSpecifiersToken: null
+            fromToken: <*Keyword 'from' />
+            #: :Space: <*Space ' ' />
+            source$:
+            <$String>
+              open: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+              content: <*StringContent 'bar' />
+              close: <*Punctuator '"' { balancer: true } />
+            </>
+            endToken: null
           </>
         </>\n`);
     });
 
     it('js`export food, {stuff} from "bar";`', () => {
-      expect(print(js`export food, {stuff} from "bar";`)).toEqual(dedent`\
-        <$_>
-          .:
-          <$Program>
-            body[]: []
-            body[]:
-            <$ExportDeclaration>
-              sigilToken: <*Keyword 'export' />
-              declaration+$: undefined
-              defaultToken: null
-              #: :Comment.Space: <*Space ' ' />
-              specifiers[]$: []
-              specifiers[]$:
-              <$ExportDefaultSpecifier>
-                local$:
-                <$Identifier>
-                  value: <*Literal 'food' />
-                </>
+      expect(print(js`export food, {stuff} from "bar";`)).toEqual(dedent`<$Program>
+          body[]:
+          <$ExportDeclaration>
+            sigilToken: <*Keyword 'export' />
+            #: :Space: <*Space ' ' />
+            defaultToken: null
+            specifiers[]$:
+            <$ExportDefaultSpecifier>
+              local$:
+              <$Identifier>
+                value: <*Literal 'food' />
               </>
-              #separatorTokens[]: []
-              #separatorTokens[]: <*Punctuator ',' />
-              #: :Comment.Space: <*Space ' ' />
-              openSpecifiersToken: <*Punctuator '{' { balanced: '}' } />
-              specifiers[]$:
-              <$ExportSpecifier>
-                local$:
-                <$Identifier>
-                  value: <*Literal 'stuff' />
-                </>
-                mapOperator: null
-                imported$: null
-              </>
-              closeSpecifiersToken: <*Punctuator '}' { balancer: true } />
-              #: :Comment.Space: <*Space ' ' />
-              fromToken: <*Keyword 'from' />
-              #: :Comment.Space: <*Space ' ' />
-              source$:
-              <$String>
-                open: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
-                content: <*StringContent 'bar' />
-                close: <*Punctuator '"' { balancer: true } />
-              </>
-              endToken: <*Punctuator ';' />
-              declaration+$: null
             </>
+            #separatorTokens[]: <*Punctuator ',' />
+            #: :Space: <*Space ' ' />
+            openSpecifiersToken: <*Punctuator '{' { balanced: '}' } />
+            specifiers[]$:
+            <$ExportSpecifier>
+              local$:
+              <$Identifier>
+                value: <*Literal 'stuff' />
+              </>
+              mapOperator: null
+              imported$: null
+            </>
+            closeSpecifiersToken: <*Punctuator '}' { balancer: true } />
+            #: :Space: <*Space ' ' />
+            fromToken: <*Keyword 'from' />
+            #: :Space: <*Space ' ' />
+            source$:
+            <$String>
+              open: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+              content: <*StringContent 'bar' />
+              close: <*Punctuator '"' { balancer: true } />
+            </>
+            endToken: <*Punctuator ';' />
           </>
         </>\n`);
     });
