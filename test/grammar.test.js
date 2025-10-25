@@ -27,27 +27,27 @@ describe('@bablr/language-en-es6', () => {
       expect(print(js`import foo from "bar"`)).toEqual(dedent`<$Program>
           body[]:
           <$ImportDeclaration>
-            sigilToken: <*Keyword 'import' />
+            sigilToken*: <*Keyword 'import' />
             #: :Space: <*Space ' ' />
-            specifiers[]$:
+            specifiers[]:
             <$ImportDefaultSpecifier>
-              local:
+              local*:
               <$Identifier>
-                value: <*Literal 'foo' />
+                value*: <*Literal 'foo' />
               </>
             </>
             #: :Space: <*Space ' ' />
-            openSpecifiersToken: null
-            closeSpecifiersToken: null
-            fromToken: <*Keyword 'from' />
+            openSpecifiersToken*: null
+            closeSpecifiersToken*: null
+            fromToken*: <*Keyword 'from' />
             #: :Space: <*Space ' ' />
-            source$:
+            source:
             <$String>
-              open: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+              openToken*: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
               content: <*StringContent 'bar' />
-              close: <*Punctuator '"' { balancer: true } />
+              closeToken*: <*Punctuator '"' { balancer: true } />
             </>
-            endToken: null
+            endToken*: null
           </>
         </>\n`);
     });
@@ -56,39 +56,39 @@ describe('@bablr/language-en-es6', () => {
       expect(print(js`export food, {stuff} from "bar";`)).toEqual(dedent`<$Program>
           body[]:
           <$ExportDeclaration>
-            sigilToken: <*Keyword 'export' />
+            sigilToken*: <*Keyword 'export' />
             #: :Space: <*Space ' ' />
-            defaultToken: null
-            specifiers[]$:
+            defaultToken*: null
+            specifiers[]:
             <$ExportDefaultSpecifier>
-              local$:
+              local:
               <$Identifier>
-                value: <*Literal 'food' />
+                value*: <*Literal 'food' />
               </>
             </>
-            separatorTokens[]: <*Punctuator ',' />
+            #separatorTokens[]: <*Punctuator ',' />
             #: :Space: <*Space ' ' />
-            openSpecifiersToken: <*Punctuator '{' { balanced: '}' } />
-            specifiers[]$:
+            openSpecifiersToken*: <*Punctuator '{' { balanced: '}' } />
+            specifiers[]:
             <$ExportSpecifier>
-              local$:
+              local:
               <$Identifier>
-                value: <*Literal 'stuff' />
+                value*: <*Literal 'stuff' />
               </>
-              mapOperator: null
-              imported$: null
+              mapOperator*: null
+              imported: null
             </>
-            closeSpecifiersToken: <*Punctuator '}' { balancer: true } />
+            closeSpecifiersToken*: <*Punctuator '}' { balancer: true } />
             #: :Space: <*Space ' ' />
-            fromToken: <*Keyword 'from' />
+            fromToken*: <*Keyword 'from' />
             #: :Space: <*Space ' ' />
-            source$:
+            source:
             <$String>
-              open: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+              openToken*: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
               content: <*StringContent 'bar' />
-              close: <*Punctuator '"' { balancer: true } />
+              closeToken*: <*Punctuator '"' { balancer: true } />
             </>
-            endToken: <*Punctuator ';' />
+            endToken*: <*Punctuator ';' />
           </>
         </>\n`);
     });
