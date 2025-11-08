@@ -6,7 +6,7 @@ import { buildTag } from 'bablr';
 import { debugEnhancers } from '@bablr/helpers/enhancers';
 import { expect } from 'expect';
 import { printPrettyCSTML } from '@bablr/helpers/tree';
-import { buildIdentifier, buildString } from '@bablr/helpers/builders';
+import { buildIdentifier } from '@bablr/helpers/builders';
 
 let enhancers = undefined;
 
