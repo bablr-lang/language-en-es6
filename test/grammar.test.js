@@ -43,9 +43,9 @@ describe('@bablr/language-en-es6', () => {
             #: :Space: <*Space ' ' />
             source:
             <$String>
-              openToken*: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+              openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
               content: <*StringContent 'bar' />
-              closeToken*: <*Punctuator '"' { balancer: true } />
+              closeToken*: <* '"' { balancer: true } />
             </>
             endToken*: null
           </>
@@ -66,9 +66,9 @@ describe('@bablr/language-en-es6', () => {
                 value*: <*Literal 'food' />
               </>
             </>
-            #separatorTokens[]: <*Punctuator ',' />
+            #separatorTokens[]: <* ',' />
             #: :Space: <*Space ' ' />
-            openSpecifiersToken*: <*Punctuator '{' { balanced: '}' } />
+            openSpecifiersToken*: <* '{' { balanced: '}' } />
             specifiers[]:
             <$ExportSpecifier>
               local:
@@ -78,17 +78,17 @@ describe('@bablr/language-en-es6', () => {
               mapOperator*: null
               imported: null
             </>
-            closeSpecifiersToken*: <*Punctuator '}' { balancer: true } />
+            closeSpecifiersToken*: <* '}' { balancer: true } />
             #: :Space: <*Space ' ' />
             fromToken*: <*Keyword 'from' />
             #: :Space: <*Space ' ' />
             source:
             <$String>
-              openToken*: <*Punctuator '"' { balanced: '"', balancedSpan: 'String:Double' } />
+              openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
               content: <*StringContent 'bar' />
-              closeToken*: <*Punctuator '"' { balancer: true } />
+              closeToken*: <* '"' { balancer: true } />
             </>
-            endToken*: <*Punctuator ';' />
+            endToken*: <* ';' />
           </>
         </>\n`);
     });
