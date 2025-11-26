@@ -66,7 +66,7 @@ describe('@bablr/language-en-es6', () => {
                 value*: <*Literal 'food' />
               </>
             </>
-            #separatorTokens[]: <* ',' />
+            #separatorTokens: <* ',' />
             #: :Space: <*Space ' ' />
             openSpecifiersToken*: <* '{' { balanced: '}' } />
             specifiers[]:
