@@ -28,24 +28,29 @@ describe('@bablr/language-en-es6', () => {
           body[]:
           <$ImportDeclaration>
             sigilToken*: <*Keyword 'import' />
-            #: :Space: <*Space ' ' />
             specifiers[]:
-            <$ImportDefaultSpecifier>
-              local*:
-              <$Identifier>
-                value*: <*Literal 'foo' />
+            <$_Trivia_>
+              #: :Space: <*Space ' ' />
+              _:
+              <$ImportDefaultSpecifier>
+                local*:
+                <$Identifier>
+                  value*: <*Literal 'foo' />
+                </>
               </>
             </>
             #: :Space: <*Space ' ' />
             openSpecifiersToken*: null
             closeSpecifiersToken*: null
             fromToken*: <*Keyword 'from' />
-            #: :Space: <*Space ' ' />
-            source:
-            <$String>
-              openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-              content: <*StringContent 'bar' />
-              closeToken*: <* '"' { balancer: true } />
+            <$_Trivia_>
+              #: :Space: <*Space ' ' />
+              _:
+              <$String>
+                openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+                content: <*StringContent 'bar' />
+                closeToken*: <* '"' { balancer: true } />
+              </>
             </>
             endToken*: null
           </>
@@ -57,13 +62,16 @@ describe('@bablr/language-en-es6', () => {
           body[]:
           <$ExportDeclaration>
             sigilToken*: <*Keyword 'export' />
-            #: :Space: <*Space ' ' />
             defaultToken*: null
             specifiers[]:
-            <$ExportDefaultSpecifier>
-              local:
-              <$Identifier>
-                value*: <*Literal 'food' />
+            <$_Trivia_>
+              #: :Space: <*Space ' ' />
+              _:
+              <$ExportDefaultSpecifier>
+                local:
+                <$Identifier>
+                  value*: <*Literal 'food' />
+                </>
               </>
             </>
             #separatorTokens: <* ',' />
@@ -81,12 +89,15 @@ describe('@bablr/language-en-es6', () => {
             closeSpecifiersToken*: <* '}' { balancer: true } />
             #: :Space: <*Space ' ' />
             fromToken*: <*Keyword 'from' />
-            #: :Space: <*Space ' ' />
             source:
-            <$String>
-              openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
-              content: <*StringContent 'bar' />
-              closeToken*: <* '"' { balancer: true } />
+            <$_Trivia_>
+              #: :Space: <*Space ' ' />
+              _:
+              <$String>
+                openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+                content: <*StringContent 'bar' />
+                closeToken*: <* '"' { balancer: true } />
+              </>
             </>
             endToken*: <* ';' />
           </>
