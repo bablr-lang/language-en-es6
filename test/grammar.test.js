@@ -47,9 +47,9 @@ describe('@bablr/language-en-es6', () => {
               #: :Space: <*Space ' ' />
               _:
               <$String>
-                openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+                openToken*: <* '"' />
                 content: <*StringContent 'bar' />
-                closeToken*: <* '"' { balancer: true } />
+                closeToken*: <* '"' />
               </>
             </>
             endToken*: null
@@ -76,7 +76,7 @@ describe('@bablr/language-en-es6', () => {
             </>
             #separatorTokens: <* ',' />
             #: :Space: <*Space ' ' />
-            openSpecifiersToken*: <* '{' { balanced: '}' } />
+            openSpecifiersToken*: <* '{' />
             specifiers[]:
             <$ExportSpecifier>
               local:
@@ -86,7 +86,7 @@ describe('@bablr/language-en-es6', () => {
               mapOperator*: null
               imported: null
             </>
-            closeSpecifiersToken*: <* '}' { balancer: true } />
+            closeSpecifiersToken*: <* '}' />
             #: :Space: <*Space ' ' />
             fromToken*: <*Keyword 'from' />
             source:
@@ -94,9 +94,9 @@ describe('@bablr/language-en-es6', () => {
               #: :Space: <*Space ' ' />
               _:
               <$String>
-                openToken*: <* '"' { balanced: '"', balancedSpan: 'String:Double' } />
+                openToken*: <* '"' />
                 content: <*StringContent 'bar' />
-                closeToken*: <* '"' { balancer: true } />
+                closeToken*: <* '"' />
               </>
             </>
             endToken*: <* ';' />
