@@ -25,79 +25,63 @@ describe('@bablr/language-en-es6', () => {
 
     it('js`import foo from "bar"`', () => {
       expect(print(js`import foo from "bar"`)).toEqual(dedent`<$Program>
-          body[]:
+          body[]$:
           <$ImportDeclaration>
             sigilToken*: <*Keyword 'import' />
-            specifiers[]:
-            <$_Trivia_>
-              #: :Space: <*Space ' ' />
-              _:
-              <$ImportDefaultSpecifier>
-                local*:
-                <$Identifier>
-                  value*: <*Literal 'foo' />
-                </>
+            #: :Space: <*Space ' ' />
+            specifiers[]$:
+            <$ImportDefaultSpecifier>
+              local*:
+              <$Identifier>
+                value*: <*Literal 'foo' />
               </>
             </>
             #: :Space: <*Space ' ' />
-            openSpecifiersToken*: null
-            closeSpecifiersToken*: null
             fromToken*: <*Keyword 'from' />
-            <$_Trivia_>
-              #: :Space: <*Space ' ' />
-              _:
-              <$String>
-                openToken*: <* '"' />
-                content: <*StringContent 'bar' />
-                closeToken*: <* '"' />
-              </>
+            #: :Space: <*Space ' ' />
+            source$:
+            <$String>
+              openToken*: <* '"' />
+              content$: <*StringContent 'bar' />
+              closeToken*: <* '"' />
             </>
-            endToken*: null
           </>
         </>\n`);
     });
 
     it('js`export food, {stuff} from "bar";`', () => {
       expect(print(js`export food, {stuff} from "bar";`)).toEqual(dedent`<$Program>
-          body[]:
+          body[]$:
           <$ExportDeclaration>
             sigilToken*: <*Keyword 'export' />
-            defaultToken*: null
-            specifiers[]:
-            <$_Trivia_>
-              #: :Space: <*Space ' ' />
-              _:
-              <$ExportDefaultSpecifier>
-                local:
-                <$Identifier>
-                  value*: <*Literal 'food' />
-                </>
+            #: :Space: <*Space ' ' />
+            specifiers[]$:
+            <$ExportDefaultSpecifier>
+              local$:
+              <$Identifier>
+                value*: <*Literal 'food' />
               </>
             </>
             #separatorTokens: <* ',' />
             #: :Space: <*Space ' ' />
             openSpecifiersToken*: <* '{' />
-            specifiers[]:
+            specifiers[]$:
             <$ExportSpecifier>
-              local:
+              local$:
               <$Identifier>
                 value*: <*Literal 'stuff' />
               </>
-              mapOperator*: null
-              imported: null
+              imported$: null
             </>
             closeSpecifiersToken*: <* '}' />
             #: :Space: <*Space ' ' />
             fromToken*: <*Keyword 'from' />
-            source:
-            <$_Trivia_>
-              #: :Space: <*Space ' ' />
-              _:
-              <$String>
-                openToken*: <* '"' />
-                content: <*StringContent 'bar' />
-                closeToken*: <* '"' />
-              </>
+            #: :Space: <*Space ' ' />
+            source$:
+            <$String>
+              openToken*: <* '"' />
+              content$: <*StringContent 'bar' />
+              closeToken*: <* '"' />
             </>
             endToken*: <* ';' />
           </>
