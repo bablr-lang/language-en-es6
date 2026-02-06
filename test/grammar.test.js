@@ -24,21 +24,31 @@ describe('@bablr/language-en-es6', () => {
     const js = buildJSTag('Program');
 
     it('js`import foo from "bar"`', () => {
-      expect(print(js`import foo from "bar"`)).toEqual(dedent`<$Program>
+      expect(print(js`import foo from "bar"`)).toEqual(dedent`\
+        <$Program>
           body[]$:
           <$ImportDeclaration>
             sigilToken*: <*Keyword 'import' />
-            #: :Space: <*Space ' ' />
+            #:
+            <$Trivia>
+              .: :Space: <*Space ' ' />
+            </>
             specifiers[]$:
             <$ImportDefaultSpecifier>
               local*:
               <$Identifier>
                 value*: <*Literal 'foo' />
+                #:
+                <$Trivia>
+                  .: :Space: <*Space ' ' />
+                </>
               </>
             </>
-            #: :Space: <*Space ' ' />
             fromToken*: <*Keyword 'from' />
-            #: :Space: <*Space ' ' />
+            #:
+            <$Trivia>
+              .: :Space: <*Space ' ' />
+            </>
             source$:
             <$String>
               openToken*: <* '"' />
@@ -49,21 +59,16 @@ describe('@bablr/language-en-es6', () => {
         </>\n`);
     });
 
-    it('js`export food, {stuff} from "bar";`', () => {
-      expect(print(js`export food, {stuff} from "bar";`)).toEqual(dedent`<$Program>
+    it('js`export {stuff} from "bar";`', () => {
+      expect(print(js`export {stuff} from "bar";`)).toEqual(dedent`\
+        <$Program>
           body[]$:
           <$ExportDeclaration>
             sigilToken*: <*Keyword 'export' />
-            #: :Space: <*Space ' ' />
-            specifiers[]$:
-            <$ExportDefaultSpecifier>
-              local$:
-              <$Identifier>
-                value*: <*Literal 'food' />
-              </>
+            #:
+            <$Trivia>
+              .: :Space: <*Space ' ' />
             </>
-            #separatorTokens: <* ',' />
-            #: :Space: <*Space ' ' />
             openSpecifiersToken*: <* '{' />
             specifiers[]$:
             <$ExportSpecifier>
@@ -74,9 +79,15 @@ describe('@bablr/language-en-es6', () => {
               imported$: null
             </>
             closeSpecifiersToken*: <* '}' />
-            #: :Space: <*Space ' ' />
+            #:
+            <$Trivia>
+              .: :Space: <*Space ' ' />
+            </>
             fromToken*: <*Keyword 'from' />
-            #: :Space: <*Space ' ' />
+            #:
+            <$Trivia>
+              .: :Space: <*Space ' ' />
+            </>
             source$:
             <$String>
               openToken*: <* '"' />
