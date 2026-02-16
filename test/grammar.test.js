@@ -94,8 +94,8 @@ describe('@bablr/language-en-es6', () => {
               content$: <*StringContent 'bar' />
               closeToken*: <* '"' />
             </>
-            endToken*: <* ';' />
           </>
+          #separatorTokens: <* ';' />
         </>\n`);
     });
   });
