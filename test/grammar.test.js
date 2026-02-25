@@ -38,11 +38,11 @@ describe('@bablr/language-en-es6', () => {
               local*:
               <$Identifier>
                 value*: <*Literal 'foo' />
-                #:
-                <$Trivia>
-                  .: :Space: <*Space ' ' />
-                </>
               </>
+            </>
+            #:
+            <$Trivia>
+              .: :Space: <*Space ' ' />
             </>
             fromToken*: <*Keyword 'from' />
             #:
