@@ -25,35 +25,29 @@ describe('@bablr/language-en-es6', () => {
 
     it('js`import foo from "bar"`', () => {
       expect(print(js`import foo from "bar"`)).toEqual(dedent`\
-        <$Program>
-          body[]$:
-          <$ImportDeclaration>
-            sigilToken*: <*Keyword 'import' />
-            #:
-            <$Trivia>
-              .: :Space: <*Space ' ' />
-            </>
-            specifiers[]$:
-            <$ImportDefaultSpecifier>
-              local*:
-              <$Identifier>
-                value*: <*Literal 'foo' />
+        <$_>
+          _:
+          <$Program>
+            body[]$:
+            <$ImportDeclaration>
+              sigilToken*: <*Keyword 'import' />
+              #: <* ' ' />
+              specifiers[]$:
+              <$ImportDefaultSpecifier>
+                local*:
+                <$Identifier>
+                  value*: <*Literal 'foo' />
+                </>
               </>
-            </>
-            #:
-            <$Trivia>
-              .: :Space: <*Space ' ' />
-            </>
-            fromToken*: <*Keyword 'from' />
-            #:
-            <$Trivia>
-              .: :Space: <*Space ' ' />
-            </>
-            source$:
-            <$String>
-              openToken*: <* '"' />
-              content$: <*StringContent 'bar' />
-              closeToken*: <* '"' />
+              #: <* ' ' />
+              fromToken*: <*Keyword 'from' />
+              #: <* ' ' />
+              source$:
+              <$String>
+                openToken*: <* '"' />
+                content$: <*StringContent 'bar' />
+                closeToken*: <* '"' />
+              </>
             </>
           </>
         </>\n`);
@@ -61,41 +55,35 @@ describe('@bablr/language-en-es6', () => {
 
     it('js`export {stuff} from "bar";`', () => {
       expect(print(js`export {stuff} from "bar";`)).toEqual(dedent`\
-        <$Program>
-          body[]$:
-          <$ExportDeclaration>
-            sigilToken*: <*Keyword 'export' />
-            #:
-            <$Trivia>
-              .: :Space: <*Space ' ' />
-            </>
-            openSpecifiersToken*: <* '{' />
-            specifiers[]$:
-            <$ExportSpecifier>
-              local$:
-              <$Identifier>
-                value*: <*Literal 'stuff' />
+        <$_>
+          _:
+          <$Program>
+            body[]$:
+            <$ExportDeclaration>
+              sigilToken*: <*Keyword 'export' />
+              #: <* ' ' />
+              openSpecifiersToken*: <* '{' />
+              specifiers[]$:
+              <$ExportSpecifier>
+                local$:
+                <$Identifier>
+                  value*: <*Literal 'stuff' />
+                </>
+                imported$: null
               </>
-              imported$: null
+              closeSpecifiersToken*: <* '}' />
+              #: <* ' ' />
+              fromToken*: <*Keyword 'from' />
+              #: <* ' ' />
+              source$:
+              <$String>
+                openToken*: <* '"' />
+                content$: <*StringContent 'bar' />
+                closeToken*: <* '"' />
+              </>
             </>
-            closeSpecifiersToken*: <* '}' />
-            #:
-            <$Trivia>
-              .: :Space: <*Space ' ' />
-            </>
-            fromToken*: <*Keyword 'from' />
-            #:
-            <$Trivia>
-              .: :Space: <*Space ' ' />
-            </>
-            source$:
-            <$String>
-              openToken*: <* '"' />
-              content$: <*StringContent 'bar' />
-              closeToken*: <* '"' />
-            </>
+            #separatorTokens: <* ';' />
           </>
-          #separatorTokens: <* ';' />
         </>\n`);
     });
   });
