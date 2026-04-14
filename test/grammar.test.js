@@ -33,10 +33,7 @@ describe('@bablr/language-en-es6', () => {
               #: <* ' ' />
               specifiers[]$:
               <$ImportDefaultSpecifier>
-                local*:
-                <$Identifier>
-                  value*: <*Literal 'foo' />
-                </>
+                local*: <*Identifier 'foo' />
               </>
               #: <* ' ' />
               fromToken*: <*Keyword 'from' />
@@ -64,10 +61,7 @@ describe('@bablr/language-en-es6', () => {
               openSpecifiersToken*: <* '{' />
               specifiers[]$:
               <$ExportSpecifier>
-                local$:
-                <$Identifier>
-                  value*: <*Literal 'stuff' />
-                </>
+                local$: <*Identifier 'stuff' />
                 imported$: null
               </>
               closeSpecifiersToken*: <* '}' />
