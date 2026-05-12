@@ -22,7 +22,7 @@ describe('@bablr/language-en-es6', () => {
     const js = buildJSTag('Program');
 
     it('js`import foo from "bar"`', () => {
-      expect(print(js`import foo from "bar"`)).toEqual(dedent`\
+      expect(print(js`import foo from "bar"`)).toEqual(dedent`
         <$_>
           _:
           <$Program>
@@ -49,7 +49,7 @@ describe('@bablr/language-en-es6', () => {
     });
 
     it('js`export {stuff} from "bar";`', () => {
-      expect(print(js`export {stuff} from "bar";`)).toEqual(dedent`\
+      expect(print(js`export {stuff} from "bar";`)).toEqual(dedent`
         <$_>
           _:
           <$Program>
