@@ -45,7 +45,8 @@ describe('@bablr/language-en-es6', () => {
               </>
             </>
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('js`export {stuff} from "bar";`', () => {
@@ -76,7 +77,8 @@ describe('@bablr/language-en-es6', () => {
             </>
             #separatorTokens: <* ';' />
           </>
-        </>\n`);
+        </>
+      `);
     });
   });
 });
