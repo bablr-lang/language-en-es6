@@ -62,7 +62,7 @@ describe('@bablr/language-en-es6', () => {
               specifiers[]$:
               <$ExportSpecifier>
                 local$: <*Identifier 'stuff' />
-                imported$: null
+                imported$: null 
               </>
               closeSpecifiersToken*: <* '}' />
               #: <* ' ' />
