@@ -9,7 +9,7 @@ import { m } from '@bablr/helpers/grammar';
 let enhancers = undefined;
 
 const buildJSTag = (type) => {
-  const matcher = m`<$${type} />`;
+  const matcher = m`<${type} />`;
   return buildTag(language, matcher, undefined, { enhancers });
 };
 
@@ -23,22 +23,22 @@ describe('@bablr/language-en-es6', () => {
 
     it('js`import foo from "bar"`', () => {
       expect(print(js`import foo from "bar"`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Program>
+          <Program>
             body[]$:
-            <$ImportDeclaration>
+            <ImportDeclaration>
               sigilToken*: <*Keyword 'import' />
               #: <* ' ' />
               specifiers[]$:
-              <$ImportDefaultSpecifier>
+              <ImportDefaultSpecifier>
                 local*: <*Identifier 'foo' />
               </>
               #: <* ' ' />
               fromToken*: <*Keyword 'from' />
               #: <* ' ' />
               source$:
-              <$String>
+              <String>
                 openToken*: <* '"' />
                 content$: <*StringContent 'bar' />
                 closeToken*: <* '"' />
@@ -51,16 +51,16 @@ describe('@bablr/language-en-es6', () => {
 
     it('js`export {stuff} from "bar";`', () => {
       expect(print(js`export {stuff} from "bar";`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Program>
+          <Program>
             body[]$:
-            <$ExportDeclaration>
+            <ExportDeclaration>
               sigilToken*: <*Keyword 'export' />
               #: <* ' ' />
               openSpecifiersToken*: <* '{' />
               specifiers[]$:
-              <$ExportSpecifier>
+              <ExportSpecifier>
                 local$: <*Identifier 'stuff' />
                 imported$: null 
               </>
@@ -69,7 +69,7 @@ describe('@bablr/language-en-es6', () => {
               fromToken*: <*Keyword 'from' />
               #: <* ' ' />
               source$:
-              <$String>
+              <String>
                 openToken*: <* '"' />
                 content$: <*StringContent 'bar' />
                 closeToken*: <* '"' />
